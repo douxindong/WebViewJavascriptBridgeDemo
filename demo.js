@@ -29,7 +29,7 @@ function iosDo2(callHandlerName,param,callbackFuncName){
             });
         });
     }catch (e) {
-
+        iosDo(callHandlerName,param);
     }
 }
 function iosDo(event,param){
