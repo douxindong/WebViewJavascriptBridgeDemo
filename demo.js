@@ -12,7 +12,27 @@ function setupWebViewJavascriptBridge(callback) {
     document.documentElement.appendChild(WVJBIframe);
     setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0);
 }
-function iosDo(event,param){    
+function iosDo2(callHandlerName,param,callbackFuncName){
+    try {
+        setupWebViewJavascriptBridge(function(bridge) {
+            //H5调用iOS原生
+            bridge.callHandler(callHandlerName, param, function(response) {
+                log('JS callHandler', response);//iOS回传：
+                // addCartCallback(response);//这个需要商定好
+            });
+            //iOS调用H5
+            bridge.registerHandler(callbackFuncName, function(data, responseCallback) {
+                var responseData = { 'Javascript Says':callbackFuncName };
+                responseCallback(responseData);//回传
+                var js="var result= "+callbackFuncName+"("+data+"); return result;";
+                (new Function(js))();
+            });
+        });
+    }catch (e) {
+
+    }
+}
+function iosDo(event,param){
     try {
         log("a");
         var paramstr="null";
@@ -27,7 +47,7 @@ function iosDo(event,param){
         }
         var js="var result= window.webkit.messageHandlers."+event+".postMessage("+paramstr+"); return result;";
         log("p0 is "+paramstr );
-        log("js0 is "+js );        
+        log("js0 is "+js );
         (new Function(js))();
     } catch (error) {
         log(error);
@@ -284,6 +304,8 @@ function addCart(itemId) {
             //调用原生方法:加入购物车
             //方法一：
             iosDo('addCart',itemId);
+            iosDo2('addCart',itemId,'addCartCallback');
+            return;
             //方法二：
             setupWebViewJavascriptBridge(function(bridge) {
                 //H5调用iOS原生
