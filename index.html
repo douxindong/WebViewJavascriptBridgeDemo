@@ -113,6 +113,10 @@
 
 
     <script>
+
+        window.onerror = function(err) {
+            log('window.onerror: ' + err)
+        };
         //呼出相册，选完照片后回调方法
         function callAlbumCallback(imgbase64str) {
             //var imgbase64str="test";

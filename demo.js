@@ -10,9 +10,8 @@ function setupWebViewJavascriptBridge(callback) {
     WVJBIframe.style.display = 'none';
     WVJBIframe.src = 'https://__bridge_loaded__';
     document.documentElement.appendChild(WVJBIframe);
-    setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
+    setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0);
 }
-
 function iosDo(event,param){    
     try {
         log("a");
@@ -283,7 +282,22 @@ function addCart(itemId) {
         }
         if (isiOS) {
             //调用原生方法:加入购物车
+            //方法一：
             iosDo('addCart',itemId);
+            //方法二：
+            setupWebViewJavascriptBridge(function(bridge) {
+                //H5调用iOS原生
+                bridge.callHandler('addCart', itemId, function(response) {
+                    log('JS addCart', response);//iOS回传：
+                    addCartCallback(response);//这个需要商定好
+                });
+                //iOS调用H5
+                // bridge.registerHandler('addCartCallback', function(data, responseCallback) {
+                //     var responseData = { 'Javascript Says':'addCartCallback!' };
+                //     responseCallback(responseData);//回传
+                //     addCartCallback(data);
+                // });
+            });
         }
     } catch (error) {
         log("addCart error");
