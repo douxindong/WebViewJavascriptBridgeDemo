@@ -2,36 +2,36 @@ var u = navigator.userAgent;
 var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
 var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 var isApp = true;
-function setupWebViewJavascriptBridge(callback) {
-    if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
-    if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
-    window.WVJBCallbacks = [callback];
-    var WVJBIframe = document.createElement('iframe');
-    WVJBIframe.style.display = 'none';
-    WVJBIframe.src = 'https://__bridge_loaded__';
-    document.documentElement.appendChild(WVJBIframe);
-    setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0);
-}
-function iosDo2(callHandlerName,param,callbackFuncName){
-    try {
-        setupWebViewJavascriptBridge(function(bridge) {
-            //H5调用iOS原生
-            bridge.callHandler(callHandlerName, param, function(response) {
-                log('JS callHandler', response);//iOS回传：
-                // addCartCallback(response);//这个需要商定好
-            });
-            //iOS调用H5
-            bridge.registerHandler(callbackFuncName, function(data, responseCallback) {
-                var responseData = { 'Javascript Says':callbackFuncName };
-                responseCallback(responseData);//回传
-                var js="var result= "+callbackFuncName+"("+data+"); return result;";
-                (new Function(js))();
-            });
-        });
-    }catch (e) {
-        iosDo(callHandlerName,param);
-    }
-}
+//function setupWebViewJavascriptBridge(callback) {
+//    if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
+//    if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
+//    window.WVJBCallbacks = [callback];
+//    var WVJBIframe = document.createElement('iframe');
+//    WVJBIframe.style.display = 'none';
+//    WVJBIframe.src = 'https://__bridge_loaded__';
+//    document.documentElement.appendChild(WVJBIframe);
+//    setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0);
+//}
+//function iosDo2(callHandlerName,param,callbackFuncName){
+//    try {
+//        setupWebViewJavascriptBridge(function(bridge) {
+//            //H5调用iOS原生
+//            bridge.callHandler(callHandlerName, param, function(response) {
+//                log('JS callHandler', response);//iOS回传：
+//                // addCartCallback(response);//这个需要商定好
+//            });
+//            //iOS调用H5
+//            bridge.registerHandler(callbackFuncName, function(data, responseCallback) {
+//                var responseData = { 'Javascript Says':callbackFuncName };
+//                responseCallback(responseData);//回传
+//                var js="var result= "+callbackFuncName+"("+data+"); return result;";
+//                (new Function(js))();
+//            });
+//        });
+//    }catch (e) {
+//        iosDo(callHandlerName,param);
+//    }
+//}
 function iosDo(event,param){
     try {
         log("a");
@@ -304,22 +304,22 @@ function addCart(itemId) {
             //调用原生方法:加入购物车
             //方法一：
             iosDo('addCart',itemId);
-            iosDo2('addCart',itemId,'addCartCallback');
-            return;
-            //方法二：
-            setupWebViewJavascriptBridge(function(bridge) {
-                //H5调用iOS原生
-                bridge.callHandler('addCart', itemId, function(response) {
-                    log('JS addCart', response);//iOS回传：
-                    addCartCallback(response);//这个需要商定好
-                });
-                //iOS调用H5
-                // bridge.registerHandler('addCartCallback', function(data, responseCallback) {
-                //     var responseData = { 'Javascript Says':'addCartCallback!' };
-                //     responseCallback(responseData);//回传
-                //     addCartCallback(data);
-                // });
-            });
+//            iosDo2('addCart',itemId,'addCartCallback');
+//            return;
+//            //方法二：
+//            setupWebViewJavascriptBridge(function(bridge) {
+//                //H5调用iOS原生
+//                bridge.callHandler('addCart', itemId, function(response) {
+//                    log('JS addCart', response);//iOS回传：
+//                    addCartCallback(response);//这个需要商定好
+//                });
+//                //iOS调用H5
+//                // bridge.registerHandler('addCartCallback', function(data, responseCallback) {
+//                //     var responseData = { 'Javascript Says':'addCartCallback!' };
+//                //     responseCallback(responseData);//回传
+//                //     addCartCallback(data);
+//                // });
+//            });
         }
     } catch (error) {
         log("addCart error");
