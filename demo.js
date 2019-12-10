@@ -367,7 +367,7 @@ $(function () {
     //step 1 初始化
     setTimeout(function() {
         initApp();
-    }, 10);
+    }, 5000);
     
 
     $("a").each(function () {
