@@ -328,10 +328,10 @@
                 log($(this).text() + " stop");
             });
             //刷新webview-------------------------------------------------------------------------------
-$("#refreshbtn1").click(function () {
+            $("#refreshbtn1").click(function () {
                 log($(this).text() + " click");
                 // reloadWebView();
-                window.location.reload(true);
+                window.location.href = window.location.href;
                 log($(this).text() + " stop");
             });
 
