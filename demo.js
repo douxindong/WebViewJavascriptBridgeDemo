@@ -365,9 +365,10 @@ function log(l) {
 $(function () {
 
     //step 1 初始化
-    setTimeout(function() {
-        initApp();
-    }, 1000);
+    // setTimeout(function() {
+    //     initApp();
+    // }, 1000);
+    initApp();
     
 
     $("a").each(function () {
