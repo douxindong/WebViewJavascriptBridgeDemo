@@ -365,7 +365,10 @@ function log(l) {
 $(function () {
 
     //step 1 初始化
-    initApp();
+    setTimeout(function() {
+        initApp();
+    }, 10);
+    
 
     $("a").each(function () {
         var obj = $(this);
