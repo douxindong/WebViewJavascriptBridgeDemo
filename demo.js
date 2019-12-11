@@ -186,7 +186,8 @@ function goPay(paywaycode, paydata) {
             }
             if (isiOS) {
                 //调用原生方法:微信支付
-                iosDo('WeChatPay',paydata);
+
+                OCmodel.WeChatPay(paydata);
             }
         }
     } catch (error) {
