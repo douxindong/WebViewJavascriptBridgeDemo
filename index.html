@@ -168,6 +168,7 @@
         //原生支付后回调的方法
         function PayCallBack(status) {
             log("begin PayCallBack " + status);
+            alert('PayCallBack='+status);
             log(status);
             if (status.toLowerCase()=="true") {
                 $("#payresult").text('支付成功');
