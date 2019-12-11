@@ -455,7 +455,8 @@
                         alert("请先生成支付信息");
                         return;
                     }
-                    var paydata = JSON.parse(json);
+                    var paydata = {};
+                    // JSON.parse(json);
                     paydata = {"timestamp":"1576029862","partnerid":"1234838202","package":"Sign=WXPay","noncestr":"87eb563da309416dbd3d92e08049d93d","sign":"97819B9480F0EF278CD565C4078CEC7D","appid":"wx4708f3e8c475498f","prepayid":"wx11100422317253b95b5892d31441411600"};
                     goPay("WxPay_App", paydata);
                 } catch (error) {
