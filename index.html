@@ -416,11 +416,15 @@
             	log($(this).text() + " click");
                 setInnerTitle("更新titlessssssss");
                 log($(this).text() + " stop");
+                var url = "http://rest-test.lifevc.com/pay/LV201905156560372700/alipay_App";
+                url = "http://rest.lifevc.com/pay/LV201912113457901564/wxpay_app";
+                var ApiToken = "U3lzQXBpfDEyMzhlNTQ5NGRjYjQ3MTJiNDBjZjE4";
+                ApiToken = "SW9zQXBpfGNiNzNlNTQ5OGQxMmI0MGNmMTQ0NQ==";
                 $.ajax({
-                    url: "http://rest-test.lifevc.com/pay/LV201905156560372700/alipay_App",
+                    url: url,
                     headers: {
                         "Content-Type": "application/json",
-                        "ApiToken": "U3lzQXBpfDEyMzhlNTQ5NGRjYjQ3MTJiNDBjZjE4"
+                        "ApiToken": ApiToken
                     },
                     success: function (result) {
                         $("#alipaytxt").text(result.InnerData.PayData);
@@ -430,11 +434,14 @@
 						log("支付宝支付数据生成失败"+JSON.stringify(result));
 					}
                 });
+                var url2 = "http://rest-test.lifevc.com/pay/LV201905156560372700/wxpay_App";
+                    url2 = "http://rest.lifevc.com/pay/LV201905156560372700/wxpay_App";
                 $.ajax({
-                    url: "http://rest-test.lifevc.com/pay/LV201905156560372700/wxpay_App",
+                    
+                    url: url2,
                     headers: {
                         "Content-Type": "application/json",
-                        "ApiToken": "U3lzQXBpfDEyMzhlNTQ5NGRjYjQ3MTJiNDBjZjE4"
+                        "ApiToken": ApiToken
                     },
                     success: function (result) {
                         $("#wxpaytxt").text(JSON.stringify(result.InnerData.PayData));
@@ -456,7 +463,7 @@
                         return;
                     }
                     var paydata = JSON.parse(json);
-                    paydata = {"timestamp":"1576028044","partnerid":"1234838202","package":"Sign=WXPay","noncestr":"4b2e1579b8b949ab85d9eb6dc3334fa6","sign":"93415A1DD27D486757157C2228647916","appid":"wx4708f3e8c475498f","prepayid":"wx110934038666046d25e39bd01128053500"};
+                    // paydata = {"timestamp":"1576028044","partnerid":"1234838202","package":"Sign=WXPay","noncestr":"4b2e1579b8b949ab85d9eb6dc3334fa6","sign":"93415A1DD27D486757157C2228647916","appid":"wx4708f3e8c475498f","prepayid":"wx110934038666046d25e39bd01128053500"};
                     goPay("WxPay_App", paydata);
                 } catch (error) {
                     log("wxgopay error");
@@ -475,7 +482,7 @@
                         return;
                     }
                     var paydata = json;
-                    paydata = "app_id=2016052401436765&biz_content=%7b%22body%22%3a%22%22%2c%22out_trade_no%22%3a%22LV201912113457901564%22%2c%22product_code%22%3a%22QUICK_MSECURITY_PAY%22%2c%22subject%22%3a%22LifeVC%e8%ae%a2%e5%8d%95%e5%8f%b7%ef%bc%9aLV201912113457901564%22%2c%22timeout_express%22%3a%2230m%22%2c%22total_amount%22%3a%22179.00%22%7d&charset=utf-8&format=json&method=alipay.trade.app.pay&notify_url=http%3a%2f%2fpaycallback4app.lifevc.com%2fpay%2falipay_app%2fnotify&sign_type=RSA2&timestamp=2019-12-11+09%3a36%3a21&version=1.0&sign=uzVrxmY0%2bYjc757mpxRA7zRSc%2b%2fRB8mT9KnSYWufe2xWg4%2fCcINBmU5snEUqPIHRUR6FeCut2EO7YShzEsLS189njPVITx7e0UMrw3QEWlnM1NXVBNcM7RSACm65cUXSLYWR%2bSPqKaroaF4WRLSsUQS7unsCGjrhCIlwxxrCWLZ3OmVcX4YeZf0I7UBw69j%2bXD8cTPM8dtEKV8qGJwLbUDwH2A5lGmkXDLXuOINkkcAwj%2benCFosRd3qiuTzWvrNZGaFFI0ssCSeDeSaELwimCqRbAigH0mqoGvxWqkAkQz8Zs%2fCW6f5udHWrfoCyiSmXoZiUFVahb0M8GzgFxchZw%3d%3d";
+                    // paydata = "app_id=2016052401436765&biz_content=%7b%22body%22%3a%22%22%2c%22out_trade_no%22%3a%22LV201912113457901564%22%2c%22product_code%22%3a%22QUICK_MSECURITY_PAY%22%2c%22subject%22%3a%22LifeVC%e8%ae%a2%e5%8d%95%e5%8f%b7%ef%bc%9aLV201912113457901564%22%2c%22timeout_express%22%3a%2230m%22%2c%22total_amount%22%3a%22179.00%22%7d&charset=utf-8&format=json&method=alipay.trade.app.pay&notify_url=http%3a%2f%2fpaycallback4app.lifevc.com%2fpay%2falipay_app%2fnotify&sign_type=RSA2&timestamp=2019-12-11+09%3a36%3a21&version=1.0&sign=uzVrxmY0%2bYjc757mpxRA7zRSc%2b%2fRB8mT9KnSYWufe2xWg4%2fCcINBmU5snEUqPIHRUR6FeCut2EO7YShzEsLS189njPVITx7e0UMrw3QEWlnM1NXVBNcM7RSACm65cUXSLYWR%2bSPqKaroaF4WRLSsUQS7unsCGjrhCIlwxxrCWLZ3OmVcX4YeZf0I7UBw69j%2bXD8cTPM8dtEKV8qGJwLbUDwH2A5lGmkXDLXuOINkkcAwj%2benCFosRd3qiuTzWvrNZGaFFI0ssCSeDeSaELwimCqRbAigH0mqoGvxWqkAkQz8Zs%2fCW6f5udHWrfoCyiSmXoZiUFVahb0M8GzgFxchZw%3d%3d";
                     goPay("Alipay_App", paydata);
                 } catch (error) {
                     log("alipaygopay error");
