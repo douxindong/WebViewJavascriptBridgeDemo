@@ -190,9 +190,12 @@
         function showEnableAppNoticeAlertCallback(result) {
             log("begin showEnableAppNoticeAlertCallback ");
             try {
+                alert("showEnableAppNoticeAlertCallback:"+result);
                 if (result) {
+                    console.log("已开启");
                     $("#noticetxt").text("已开启");
                 } else {
+                    console.log("未开启");
                     $("#noticetxt").text("未开启");
                     //去设置通知
                     $("#noticebtn").unbind("click");
@@ -307,13 +310,7 @@
                 $("#noticetxt").text("未开启");
                 //去设置通知
                 $("#noticebtn").click(function () {
-                    var result = IsEnableAppNotice() || false;
-                    if (result) {
-                        
-                    } else {
-                        showEnableAppNoticeAlert();
-                    }
-
+                    showEnableAppNoticeAlert();
                 });
             }
             //提醒------------------------------------------------------------------------------
