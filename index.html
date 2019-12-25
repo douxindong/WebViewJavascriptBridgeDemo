@@ -190,24 +190,18 @@
         function showEnableAppNoticeAlertCallback(result) {
             log("begin showEnableAppNoticeAlertCallback ");
             try {
-                alert("showEnableAppNoticeAlertCallback:"+typeof(result));
-                var bool = result.toLowerCase();
-                alert(bool);
-                if (result) {
-                    console.log("已开启");
+                alert("showEnableAppNoticeAlertCallback:"+typeof(Boolean(result)));
+                if (result == 'true' || result == '1') {
                     alert("已开启");
                     $("#noticetxt").text("已开启");
                 } else {
                     alert("未开启");
-                    console.log("未开启");
                     $("#noticetxt").text("未开启");
                     //去设置通知
                     $("#noticebtn").unbind("click");
                 }
             } catch (error) {
-                alert(error)
                 log("showEnableAppNoticeAlertCallback error");
-                log(error);
             }
         }
         //原生app打开本页连接后回调的js方法
