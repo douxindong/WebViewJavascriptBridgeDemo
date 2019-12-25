@@ -133,10 +133,10 @@
         //保存照片后回调方法
         function savePhotoToAlbumCallback(result) {
 
-            setTimeout(function () {
+            // setTimeout(function () {
                 log("begin savePhotoToAlbumCallback " + result);
                 try {
-                    if (result) {
+                    if (toBoolean(result)) {
                         alert("保存成功");
                     } else {
                         alert("保存失败");
@@ -145,7 +145,7 @@
                     log("callAlbumCallback error");
                     log(error);
                 }
-            }, 100);
+            // }, 100);
 
 
         }
@@ -185,7 +185,7 @@
                 //ToDo
             }
         }
-        function getStatusBoolean(status) {
+        function toBoolean(status) {
             if (typeof(status) === 'string'){
                 return (status.toLowerCase() === 'true' || status === '1');
             }
@@ -197,7 +197,7 @@
             try {
                 alert("result:"+result)
                 alert("resultType:"+typeof(result))
-                if (getStatusBoolean(result)) {
+                if (toBoolean(result)) {
                     alert("已开启");
                     $("#noticetxt").text("已开启");
                 } else {
