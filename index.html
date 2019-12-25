@@ -190,7 +190,9 @@
         function showEnableAppNoticeAlertCallback(result) {
             log("begin showEnableAppNoticeAlertCallback ");
             try {
-                alert("showEnableAppNoticeAlertCallback:"+result);
+                alert("showEnableAppNoticeAlertCallback:"+typeof(result));
+                var bool = result.toLowerCase();
+                alert(bool);
                 if (result) {
                     console.log("已开启");
                     alert("已开启");
