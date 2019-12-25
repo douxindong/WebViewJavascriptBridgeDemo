@@ -133,11 +133,10 @@
         //保存照片后回调方法
         function savePhotoToAlbumCallback(result) {
 
-            setTimeout(function () {
-
+            // setTimeout(function () {
                 log("begin savePhotoToAlbumCallback " + result);
                 try {
-                    if (result) {
+                    if (toBoolean(result)) {
                         alert("保存成功");
                     } else {
                         alert("保存失败");
@@ -146,7 +145,7 @@
                     log("callAlbumCallback error");
                     log(error);
                 }
-            }, 100);
+            // }, 100);
 
 
         }
@@ -186,19 +185,26 @@
                 //ToDo
             }
         }
+        function toBoolean(status) {
+            if (typeof(status) === 'string'){
+                return (status.toLowerCase() === 'true' || status === '1');
+            }
+            return status;
+        }
         //弹出去设置开启提醒的alert
         function showEnableAppNoticeAlertCallback(result) {
             log("begin showEnableAppNoticeAlertCallback ");
             try {
-                alert("showEnableAppNoticeAlertCallback:"+typeof(Boolean(result)));
-                if (result == 'true' || result == '1') {
+                alert("result:"+result)
+                alert("resultType:"+typeof(result))
+                if (toBoolean(result)) {
                     alert("已开启");
                     $("#noticetxt").text("已开启");
                 } else {
                     alert("未开启");
                     $("#noticetxt").text("未开启");
                     //去设置通知
-                    $("#noticebtn").unbind("click");
+                    // $("#noticebtn").unbind("click");
                 }
             } catch (error) {
                 log("showEnableAppNoticeAlertCallback error");
