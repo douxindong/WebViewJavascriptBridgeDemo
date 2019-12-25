@@ -134,7 +134,6 @@
         function savePhotoToAlbumCallback(result) {
 
             setTimeout(function () {
-
                 log("begin savePhotoToAlbumCallback " + result);
                 try {
                     if (result) {
@@ -187,12 +186,10 @@
             }
         }
         function getStatusBoolean(status) {
-            let type = typeof(status);
-            let resBool = status;
-            if(type === 'string'){
-                resBool = status.toLowerCase() === 'true' || status === '1';
+            if (typeof(status) === 'string'){
+                return (status.toLowerCase() === 'true' || status === '1');
             }
-            return resBool;
+            return status;
         }
         //弹出去设置开启提醒的alert
         function showEnableAppNoticeAlertCallback(result) {
