@@ -62,17 +62,17 @@
 
         <div>
 			<span id="sharetxt"></span> <br />
-		
+
             h5分享<br />
             <button id="h5sharebtn" type="button">打开h5分享</button>
 			<br /><br />
 			全部分享<br />
-            
+
             <button id="sharebtn" type="button">打开全部分享</button>
-			
+
         </div><br />
 
-        
+
 
         <div>
             支付<br />
@@ -222,7 +222,7 @@
             log("begin userInfoCallback " + JSON.stringify(json));
             try {
                 //ToDo
-                $("#userinfotxt").text(JSON.stringify(json));               
+                $("#userinfotxt").text(JSON.stringify(json));
 
             } catch (error) {
                 log("userInfoCallback error");
@@ -233,7 +233,7 @@
         function addCartCallback(result) {
             log("begin addCartCallback " + result);
             try {
-                //ToDo                               
+                //ToDo
                 $("#addcartresulttxt").text("加入购物车："+result)
 
             } catch (error) {
@@ -246,7 +246,7 @@
         function addGiftCouponCallback(result) {
             log("begin addGiftCouponCallback " + result);
             try {
-                //ToDo                               
+                //ToDo
                 $("#addgiftcouponresulttxt").text("礼品券加入购物车："+result)
 
             } catch (error) {
@@ -262,7 +262,7 @@
             //购物车-----------------------------------------------------------------------------------
             $("#addcartbtn").click(function () {
                 log($(this).text() + " click");
-                var id=$("#addcarttxt").val();                
+                var id=$("#addcarttxt").val();
                 addCart(id);
                 log($(this).text() + " stop");
             });
@@ -307,7 +307,13 @@
                 $("#noticetxt").text("未开启");
                 //去设置通知
                 $("#noticebtn").click(function () {
-                    showEnableAppNoticeAlert();
+                    var result = IsEnableAppNotice() || false;
+                    if (result) {
+                        
+                    } else {
+                        showEnableAppNoticeAlert();
+                    }
+
                 });
             }
             //提醒------------------------------------------------------------------------------
@@ -339,7 +345,7 @@
             //分享------------------------------------------------------------------------------------
             $("#h5sharebtn").click(function () {
                 log($(this).text() + " click");
-				var shareData = 
+				var shareData =
 				{
 						"H5ShareInfo": {
 							"MiniProCode": "",
@@ -354,7 +360,7 @@
                 appShareUrl(shareData);
                 log($(this).text() + " stop");
             });
-			
+
 			$("#sharebtn").click(function () {
                 log($(this).text() + " click");
 				var shareData = {
@@ -389,7 +395,7 @@
                 appShareUrl(shareData);
                 log($(this).text() + " stop");
             });
-			
+
             //分享-------------------------------------------------------------------------------
 
 

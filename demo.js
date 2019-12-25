@@ -205,8 +205,7 @@ function IsEnableAppNotice() {
         }
         if (isiOS) {
             //调用原生方法:判断是否启用app通知
-            return OCmodel.isEnableAppNotice()
-            // return iosDo('isEnableAppNotice');
+            return iosDo('isEnableAppNotice');
         }
     } catch (error) {
         log("IsEnableAppNotice error");
