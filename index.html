@@ -186,20 +186,21 @@
                 //ToDo
             }
         }
+        function getStatusBoolean(status) {
+            let type = typeof(status);
+            let resBool = status;
+            if(type === 'string'){
+                resBool = status.toLowerCase() === 'true' || status === '1';
+            }
+            return resBool;
+        }
         //弹出去设置开启提醒的alert
         function showEnableAppNoticeAlertCallback(result) {
             log("begin showEnableAppNoticeAlertCallback ");
             try {
                 alert("result:"+result)
                 alert("resultType:"+typeof(result))
-                var t=typeof(result);
-                var resBool = false;
-                if(t=='string'){
-                    resBool = result.toLowerCase() == 'true' || result == '1'
-                }else {
-                    resBool = result;
-                }
-                if (resBool) {
+                if (getStatusBoolean(result)) {
                     alert("已开启");
                     $("#noticetxt").text("已开启");
                 } else {
