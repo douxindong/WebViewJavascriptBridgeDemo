@@ -357,7 +357,6 @@ var ustr = "";
 
 
 function log(l) {
-    alert("l"+l+typeof(l));
     var s = $("#log").html();
     $("#log").html(s + "<br/>" + l);
     console.log(l);
