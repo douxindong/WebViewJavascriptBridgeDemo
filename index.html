@@ -192,7 +192,14 @@
             try {
                 alert("result:"+result)
                 alert("resultType:"+typeof(result))
-                if (result.toLowerCase() == 'true' || result == '1' || result) {
+                var t=typeof(result);
+                var resBool = false;
+                if(t=='string'){
+                    resBool = result.toLowerCase() == 'true' || result == '1'
+                }else {
+                    resBool = result;
+                }
+                if (resBool) {
                     alert("已开启");
                     $("#noticetxt").text("已开启");
                 } else {
