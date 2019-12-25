@@ -68,15 +68,15 @@ function iosDo(event,param){
                             s+="'"+param[o]+"',";
                         }else{
                             s+=param[o]+",";
-                        }                        
+                        }
                     }
                     paramstr= s.substring(0,s.length-1);
                 }
             }
             var js="return OCmodel."+event+"("+paramstr+");";
-           
+
             log("p1 is "+paramstr );
-            log("js1 is "+js );        
+            log("js1 is "+js );
             (new Function(js))();
             return;
 
@@ -94,7 +94,7 @@ function initApp() {
         if (isAndroid) {
             window.OCmodel.getAppInfo(); //调用原生方法
         }
-        if (isiOS) {            
+        if (isiOS) {
             iosDo('getAppInfo');
         }
     } catch (error) {
@@ -205,7 +205,8 @@ function IsEnableAppNotice() {
         }
         if (isiOS) {
             //调用原生方法:判断是否启用app通知
-            return iosDo('isEnableAppNotice');
+            return OCmodel.isEnableAppNotice()
+            // return iosDo('isEnableAppNotice');
         }
     } catch (error) {
         log("IsEnableAppNotice error");
@@ -370,7 +371,7 @@ $(function () {
     //     initApp();
     // }, 1000);
     initApp();
-    
+
 
     $("a").each(function () {
         var obj = $(this);
