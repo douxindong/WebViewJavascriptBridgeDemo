@@ -193,14 +193,17 @@
                 alert("showEnableAppNoticeAlertCallback:"+result);
                 if (result) {
                     console.log("已开启");
+                    alert("已开启");
                     $("#noticetxt").text("已开启");
                 } else {
+                    alert("未开启");
                     console.log("未开启");
                     $("#noticetxt").text("未开启");
                     //去设置通知
                     $("#noticebtn").unbind("click");
                 }
             } catch (error) {
+                alert(error)
                 log("showEnableAppNoticeAlertCallback error");
                 log(error);
             }
