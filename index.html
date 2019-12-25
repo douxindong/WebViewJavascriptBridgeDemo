@@ -190,8 +190,7 @@
         function showEnableAppNoticeAlertCallback(result) {
             log("begin showEnableAppNoticeAlertCallback ");
             try {
-                alert("showEnableAppNoticeAlertCallback:"+typeof(Boolean(result)));
-                if (result == 'true' || result == '1') {
+                if (result.toLowerCase() == 'true' || result == '1' || result) {
                     alert("已开启");
                     $("#noticetxt").text("已开启");
                 } else {
