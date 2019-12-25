@@ -120,13 +120,14 @@
         };
         //呼出相册，选完照片后回调方法
         function callAlbumCallback(imgbase64str) {
+            alert(imgbase64str)
             //var imgbase64str="test";
             log("begin callAlbumCallback ");
             try {
                 $("#albumimg").attr("src", "data:image/jpeg;base64," + imgbase64str);
+                alert('callAlbumCallback success')
             } catch (error) {
-                log("callAlbumCallback error");
-                log(error);
+                alert('callAlbumCallback error'+ error)
             }
         }
 
