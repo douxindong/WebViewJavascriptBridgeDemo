@@ -197,8 +197,6 @@
         function showEnableAppNoticeAlertCallback(result) {
             log("begin showEnableAppNoticeAlertCallback ");
             try {
-                alert("result:"+result)
-                alert("resultType:"+typeof(result))
                 if (toBoolean(result)) {
                     alert("已开启");
                     $("#noticetxt").text("已开启");
