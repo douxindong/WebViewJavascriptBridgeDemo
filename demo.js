@@ -186,8 +186,7 @@ function goPay(paywaycode, paydata) {
             }
             if (isiOS) {
                 //调用原生方法:微信支付
-
-                OCmodel.WeChatPay(paydata);
+                iosDo('WeChatPay',paydata);
             }
         }
     } catch (error) {
@@ -216,6 +215,8 @@ function IsEnableAppNotice() {
 //弹出去设置开启提醒的alert
 function showEnableAppNoticeAlert() {
     log("begin showEnableAppNoticeAlert ");
+
+
     try {
         if (isAndroid) {
             window.OCmodel.showEnableAppNoticeAlert(); //调用原生方法:弹出去设置开启提醒的alert
