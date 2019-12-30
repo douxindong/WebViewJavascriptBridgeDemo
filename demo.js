@@ -73,7 +73,7 @@ function iosDo(event,param){
                     paramstr= s.substring(0,s.length-1);
                 }
             }
-            var js="return OCmodel."+event+"("+paramstr+");";
+            var js="return OCmodel."+event+"(\""+paramstr+"\");";
 
             log("p1 is "+paramstr );
             log("js1 is "+js );
