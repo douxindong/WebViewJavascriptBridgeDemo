@@ -108,7 +108,7 @@ function initApp() {
 
 }
 function jump() {
-    alert('jup')
+    // alert('jup')
     window.location.href = 'http://w2.lifevc.com/oneyearact/fulika.html?actcode=oneyeartest2&webid=35dd8c328d70445e83f216b79ef5e258';
 }
 //设置原生app的头名称
