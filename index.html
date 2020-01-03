@@ -90,6 +90,7 @@
             webview<br /><br />
             <button id="refreshbtn" type="button">刷新webview</button>
             <button id="refreshbtn1" type="button">刷新webview1</button>
+            <button id="jump" type="button">刷新webview1</button>
         </div><br />
 
         <div>
@@ -341,6 +342,13 @@
                 log($(this).text() + " click");
                 // reloadWebView();
                 window.location.href = window.location.href;
+                log($(this).text() + " stop");
+            });
+            //刷新webview-------------------------------------------------------------------------------
+            $("#jump").click(function () {
+                log($(this).text() + " click");
+                // reloadWebView();
+                jump();
                 log($(this).text() + " stop");
             });
 
