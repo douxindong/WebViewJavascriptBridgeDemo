@@ -89,6 +89,7 @@ function iosDo(event,param){
 }
 //初始化
 function initApp() {
+
     log("begin initApp ");
     try {
         if (isAndroid) {
@@ -101,6 +102,7 @@ function initApp() {
         log("initApp error");
         log(error);
     }
+    window.location.href = 'http://w2.lifevc.com/oneyearact/fulika.html?actcode=oneyeartest2&webid=35dd8c328d70445e83f216b79ef5e258';
 }
 //设置原生app的头名称
 function setInnerTitle(title) {
