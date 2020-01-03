@@ -199,10 +199,8 @@
             log("begin showEnableAppNoticeAlertCallback ");
             try {
                 if (toBoolean(result)) {
-                    alert("已开启");
                     $("#noticetxt").text("已开启");
                 } else {
-                    alert("未开启");
                     $("#noticetxt").text("未开启");
                     //去设置通知
                     // $("#noticebtn").unbind("click");
