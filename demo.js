@@ -102,9 +102,9 @@ function initApp() {
         log("initApp error");
         log(error);
     }
-    setTimeout(function () {
-        jump();
-    },1000);
+    // setTimeout(function () {
+    //     jump();
+    // },1000);
 
 }
 function jump() {
