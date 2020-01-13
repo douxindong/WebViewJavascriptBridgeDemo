@@ -34,13 +34,20 @@
 
         <div>
             礼品券<br /><span id="addgiftcouponresulttxt"></span> <br />
-            <input id="addgiftcoupontxt"  placeholder="参数" value='{"itemid":"","code":"","promotionid":""}' style="
+            <input id="addgiftcoupontxt"  placeholder="参数" value='{"itemid":"34260","code":"1192LYTEST20113","promotionid":"1192"}' style="
             width: 100%;
             line-height: 28px;
         "/><br />
             <button id="addgiftcouponbtn" type="button">添加礼品券</button>
         </div><br />
-
+        <div>
+            体验券<br /><span id="addexperiencecouponresulttxt"></span> <br />
+            <input id="addexperiencecoupontxt"  placeholder="参数" value='{"itemid":"36125","code":"1193LYTEST20113","promotionid":"1193"}' style="
+            width: 100%;
+            line-height: 28px;
+        "/><br />
+            <button id="addexperiencetcouponbtn" type="button">添加体验券</button>
+        </div><br />
         <div>
             相册<br /><br />
             <button id="openalbumbtn" type="button">打开相册选择图片</button><br /><br />
@@ -285,6 +292,15 @@
                 if(!data||data=="") {alert("参数为空"); return; }
                 data=JSON.parse(data);
                 addGiftCoupon(data.itemid,data.code,data.promotionid);
+                log($(this).text() + " stop");
+            });
+
+            $("#addexperiencecouponbtn").click(function () {
+                log($(this).text() + " click");
+                var data=$("#addexperiencecoupontxt").val();
+                if(!data||data=="") {alert("参数为空"); return; }
+                data=JSON.parse(data);
+                addExperienceCoupon(data.itemid,data.code,data.promotionid);
                 log($(this).text() + " stop");
             });
             //礼品券-------------------------------------------------------------------------------

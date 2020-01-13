@@ -343,6 +343,25 @@ function addGiftCoupon(itemId,code,promotionId) {
         log(error);
     }
 }
+
+//礼品券加入购物车
+function addExperienceCoupon(itemId,code,promotionId) {
+    log("begin addExperienceCoupon ");
+    try {
+        if (isAndroid) {
+            window.OCmodel.addExperienceCoupon(itemId,code,promotionId); //调用原生方法:礼品券加入购物车
+        }
+        if (isiOS) {
+            //调用原生方法:礼品券加入购物车
+            iosDo('addExperienceCoupon',{itemId:itemId,code:code,promotionId:promotionId});
+        }
+    } catch (error) {
+        log("addExperienceCoupon error");
+        log(error);
+    }
+}
+
+
 function getQueryString(name) {
     var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
     var r = window.location.search.substr(1).match(reg);
