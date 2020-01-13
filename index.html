@@ -46,7 +46,7 @@
             width: 100%;
             line-height: 28px;
         "/><br />
-            <button id="addexperiencetcouponbtn" type="button">添加体验券</button>
+            <button id="addexperiencecouponbtn" type="button">添加体验券</button>
         </div><br />
         <div>
             相册<br /><br />
@@ -272,6 +272,18 @@
             }
         }
 
+        //调用原生使用礼品券方法后，原生回调的js方法
+        function addExperienceCouponCallback(result) {
+            log("begin addExperienceCouponCallback " + result);
+            try {
+                //ToDo
+                $("#addexperiencecouponresulttxt").text("体验券加入购物车："+result)
+
+            } catch (error) {
+                log("addExperienceCouponCallback error");
+                log(error);
+            }
+        }
     </script>
     <script>
         $(function () {
