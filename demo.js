@@ -73,7 +73,7 @@ function iosDo(event,param){
                     paramstr= s.substring(0,s.length-1);
                 }
             }
-            var js="return OCmodel."+event+"(\""+paramstr+"\");";
+            var js="return OCmodel."+event+"("+paramstr+");";
 
             log("p1 is "+paramstr );
             log("js1 is "+js );
@@ -89,7 +89,6 @@ function iosDo(event,param){
 }
 //初始化
 function initApp() {
-
     log("begin initApp ");
     try {
         if (isAndroid) {
@@ -102,14 +101,6 @@ function initApp() {
         log("initApp error");
         log(error);
     }
-    // setTimeout(function () {
-    //     jump();
-    // },1000);
-
-}
-function jump() {
-    // alert('jup')
-    window.location.href = 'http://w2.lifevc.com/oneyearact/fulika.html?actcode=oneyeartest2&webid=35dd8c328d70445e83f216b79ef5e258';
 }
 //设置原生app的头名称
 function setInnerTitle(title) {
@@ -195,7 +186,8 @@ function goPay(paywaycode, paydata) {
             }
             if (isiOS) {
                 //调用原生方法:微信支付
-                iosDo('WeChatPay',paydata);
+
+                OCmodel.WeChatPay(paydata);
             }
         }
     } catch (error) {
@@ -224,8 +216,6 @@ function IsEnableAppNotice() {
 //弹出去设置开启提醒的alert
 function showEnableAppNoticeAlert() {
     log("begin showEnableAppNoticeAlert ");
-
-
     try {
         if (isAndroid) {
             window.OCmodel.showEnableAppNoticeAlert(); //调用原生方法:弹出去设置开启提醒的alert
@@ -353,6 +343,25 @@ function addGiftCoupon(itemId,code,promotionId) {
         log(error);
     }
 }
+
+//礼品券加入购物车
+function addExperienceCoupon(itemId,code,promotionId) {
+    log("begin addExperienceCoupon ");
+    try {
+        if (isAndroid) {
+            window.OCmodel.addExperienceCoupon(itemId,code,promotionId); //调用原生方法:礼品券加入购物车
+        }
+        if (isiOS) {
+            //调用原生方法:礼品券加入购物车
+            iosDo('addExperienceCoupon',{itemId:itemId,code:code,promotionId:promotionId});
+        }
+    } catch (error) {
+        log("addExperienceCoupon error");
+        log(error);
+    }
+}
+
+
 function getQueryString(name) {
     var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
     var r = window.location.search.substr(1).match(reg);

@@ -34,13 +34,20 @@
 
         <div>
             礼品券<br /><span id="addgiftcouponresulttxt"></span> <br />
-            <input id="addgiftcoupontxt"  placeholder="参数" value='{"itemid":"","code":"","promotionid":""}' style="
+            <input id="addgiftcoupontxt"  placeholder="参数" value='{"itemid":"34260","code":"1192LYTEST20113","promotionid":"1192"}' style="
             width: 100%;
             line-height: 28px;
         "/><br />
             <button id="addgiftcouponbtn" type="button">添加礼品券</button>
         </div><br />
-
+        <div>
+            体验券<br /><span id="addexperiencecouponresulttxt"></span> <br />
+            <input id="addexperiencecoupontxt"  placeholder="参数" value='{"itemid":"36125","code":"1193LYTEST20113","promotionid":"1193"}' style="
+            width: 100%;
+            line-height: 28px;
+        "/><br />
+            <button id="addexperiencetcouponbtn" type="button">添加体验券</button>
+        </div><br />
         <div>
             相册<br /><br />
             <button id="openalbumbtn" type="button">打开相册选择图片</button><br /><br />
@@ -90,7 +97,6 @@
             webview<br /><br />
             <button id="refreshbtn" type="button">刷新webview</button>
             <button id="refreshbtn1" type="button">刷新webview1</button>
-            <button id="jump" type="button">刷新webview1</button>
         </div><br />
 
         <div>
@@ -115,7 +121,7 @@
 
 
     <script>
-jump();
+
         window.onerror = function(err) {
             log('window.onerror: ' + err)
         };
@@ -198,9 +204,13 @@ jump();
         function showEnableAppNoticeAlertCallback(result) {
             log("begin showEnableAppNoticeAlertCallback ");
             try {
+                alert("result:"+result)
+                alert("resultType:"+typeof(result))
                 if (toBoolean(result)) {
+                    alert("已开启");
                     $("#noticetxt").text("已开启");
                 } else {
+                    alert("未开启");
                     $("#noticetxt").text("未开启");
                     //去设置通知
                     // $("#noticebtn").unbind("click");
@@ -284,6 +294,15 @@ jump();
                 addGiftCoupon(data.itemid,data.code,data.promotionid);
                 log($(this).text() + " stop");
             });
+
+            $("#addexperiencecouponbtn").click(function () {
+                log($(this).text() + " click");
+                var data=$("#addexperiencecoupontxt").val();
+                if(!data||data=="") {alert("参数为空"); return; }
+                data=JSON.parse(data);
+                addExperienceCoupon(data.itemid,data.code,data.promotionid);
+                log($(this).text() + " stop");
+            });
             //礼品券-------------------------------------------------------------------------------
 
             //相册-------------------------------------------------------------------------
@@ -340,13 +359,6 @@ jump();
                 log($(this).text() + " click");
                 // reloadWebView();
                 window.location.href = window.location.href;
-                log($(this).text() + " stop");
-            });
-            //刷新webview-------------------------------------------------------------------------------
-            $("#jump").click(function () {
-                log($(this).text() + " click");
-                // reloadWebView();
-                jump();
                 log($(this).text() + " stop");
             });
 
