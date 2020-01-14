@@ -34,7 +34,7 @@
 
         <div>
             礼品券<br /><span id="addgiftcouponresulttxt"></span> <br />
-            <input id="addgiftcoupontxt"  placeholder="参数" value='{"itemid":"34260","code":"1192LYTEST20113","promotionid":"1192"}' style="
+            <input id="addgiftcoupontxt"  placeholder="参数" value='{"itemid":"34260","code":"1192LYTEST113","promotionid":"1192"}' style="
             width: 100%;
             line-height: 28px;
         "/><br />
@@ -42,7 +42,7 @@
         </div><br />
         <div>
             体验券<br /><span id="addexperiencecouponresulttxt"></span> <br />
-            <input id="addexperiencecoupontxt"  placeholder="参数" value='{"itemid":"36125","code":"1193LYTEST20113","promotionid":"1193"}' style="
+            <input id="addexperiencecoupontxt"  placeholder="参数" value='{"itemid":"36125","code":"1193LYTEST113","promotionid":"1193"}' style="
             width: 100%;
             line-height: 28px;
         "/><br />
@@ -204,13 +204,13 @@
         function showEnableAppNoticeAlertCallback(result) {
             log("begin showEnableAppNoticeAlertCallback ");
             try {
-                alert("result:"+result)
-                alert("resultType:"+typeof(result))
+                // alert("result:"+result)
+                // alert("resultType:"+typeof(result))
                 if (toBoolean(result)) {
-                    alert("已开启");
+                    // alert("已开启");
                     $("#noticetxt").text("已开启");
                 } else {
-                    alert("未开启");
+                    // alert("未开启");
                     $("#noticetxt").text("未开启");
                     //去设置通知
                     // $("#noticebtn").unbind("click");
@@ -277,7 +277,8 @@
             log("begin addExperienceCouponCallback " + result);
             try {
                 //ToDo
-                $("#addexperiencecouponresulttxt").text("体验券加入购物车："+result)
+                $("#addexperiencecouponresulttxt" +
+                    "").text("体验券加入购物车："+result)
 
             } catch (error) {
                 log("addExperienceCouponCallback error");
