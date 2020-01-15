@@ -231,7 +231,7 @@ function showEnableAppNoticeAlert() {
 }
 //保存图片到本地
 function savePhotoToAlbum(imgbase64str) {
-    log("begin savePhotoToAlbum " + imgbase64str);
+    // log("begin savePhotoToAlbum " + imgbase64str);
     alert('baocun')
     try {
         if (isAndroid) {
