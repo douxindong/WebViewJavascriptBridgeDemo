@@ -240,8 +240,8 @@ function savePhotoToAlbum(imgbase64str) {
         if (isiOS) {
             //调用原生方法:弹出保存图片
             // iosDo('savePhotoToAlbum',imgbase64str);
-            OCmodel.savePhotoToAlbum(imgbase64str)
-            // saveFile(imgbase64str,'file')
+            // OCmodel.savePhotoToAlbum(imgbase64str)
+            saveFile(imgbase64str,'file')
         }
     } catch (error) {
         log("savePhotoToAlbum error");
