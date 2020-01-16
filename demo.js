@@ -135,6 +135,24 @@ function appShareUrl(shareData) {
     }
 }
 
+//调用原生app的分享
+function shareItem(shareData) {
+    alert(JSON.stringify(shareData))
+    log("begin shareItem shareData=" + JSON.stringify(shareData));
+    try {
+        if (isAndroid) {
+            window.OCmodel.shareItem(JSON.stringify(shareData)); //调用原生方法：分享
+        }
+        if (isiOS) {
+            //调用原生方法：分享
+            iosDo('shareItem',shareData);
+        }
+    } catch (error) {
+        log("shareItem error");
+        log(error);
+    }
+}
+
 //原生app内跳转到商品详情页
 function goItem(itemInfoId) {
     log("begin goItem " + itemInfoId);
