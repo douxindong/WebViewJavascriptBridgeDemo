@@ -89,6 +89,12 @@
             <div style="background: aqua">
             <ul>
                 <li>
+                    <div>分享H5链接（目前支持QQ、微信好友、朋友圈）</div>
+                    <button id="h5sharebtn1" type="button">朋友圈</button>
+                    <button id="h5sharebtn2" type="button">微信好友</button>
+                    <button id="h5sharebtn3" type="button">QQ</button>
+                </li>
+                <li>
                     <div>分享海报（目前支持朋友圈，添加支持微信好友和QQ）</div>
                     <button id="imgsharebtn1" type="button">朋友圈</button>
                     <button id="imgsharebtn2" type="button">微信好友</button>
@@ -97,12 +103,6 @@
                 <li>
                     <div>分享小程序（目前支持微信好友）</div>
                     <button id="minsharebtn" type="button">微信好友</button>
-                </li>
-                <li>
-                    <div>分享H5链接（目前支持QQ、微信好友、朋友圈）</div>
-                    <button id="h5sharebtn1" type="button">朋友圈</button>
-                    <button id="h5sharebtn2" type="button">微信好友</button>
-                    <button id="h5sharebtn3" type="button">QQ</button>
                 </li>
             </ul>
             </div>
@@ -498,6 +498,63 @@
                         "ShareDesc": "测试H5分享到QQ描述",
                         "ShareType": 1, //(1、H5 2、海报 3、小程序)
                         "SharePlatform":3, //(1、朋友圈 2、微信好友 3、QQ)
+                    };
+                shareItem(shareData);
+                log($(this).text() + " stop");
+            });
+
+            $("#imgsharebtn1").click(function () {
+                log($(this).text() + " click");
+                var shareData =
+                    {
+                        "ShareLink": "http://m.lifevc.com",
+                        "ShareTitle": "测试海报分享到朋友圈",
+                        "ShareImgUrl": "http://i1.lifevccdn.com/upload/cart/91b548e7aa354847a31309f21d857634.png",
+                        "ShareDesc": "测试海报分享到朋友圈描述",
+                        "ShareType": 2, //(1、H5 2、海报 3、小程序)
+                        "SharePlatform": 1, //(1、朋友圈 2、微信好友 3、QQ)
+                    };
+                shareItem(shareData);
+                log($(this).text() + " stop");
+            });
+            $("#imgsharebtn2").click(function () {
+                log($(this).text() + " click");
+                var shareData =
+                    {
+                        "ShareLink": "http://m.lifevc.com",
+                        "ShareTitle": "测试海报分享到微信好友",
+                        "ShareImgUrl": "http://i1.lifevccdn.com/upload/cart/91b548e7aa354847a31309f21d857634.png",
+                        "ShareDesc": "测试海报分享到微信好友描述",
+                        "ShareType": 2, //(1、H5 2、海报 3、小程序)
+                        "SharePlatform": 2, //(1、朋友圈 2、微信好友 3、QQ)
+                    };
+                shareItem(shareData);
+                log($(this).text() + " stop");
+            });
+            $("#imgsharebtn3").click(function () {
+                log($(this).text() + " click");
+                var shareData =
+                    {
+                        "ShareLink": "http://m.lifevc.com",
+                        "ShareTitle": "测试海报分享到QQ",
+                        "ShareImgUrl": "http://i1.lifevccdn.com/upload/cart/91b548e7aa354847a31309f21d857634.png",
+                        "ShareDesc": "测试海报分享到QQ描述",
+                        "ShareType": 2, //(1、H5 2、海报 3、小程序)
+                        "SharePlatform":3, //(1、朋友圈 2、微信好友 3、QQ)
+                    };
+                shareItem(shareData);
+                log($(this).text() + " stop");
+            });
+            $("#minsharebtn").click(function () {
+                log($(this).text() + " click");
+                var shareData =
+                    {
+                        "ShareLink": "http://m.lifevc.com",
+                        "ShareTitle": "测试小程序分享到QQ",
+                        "ShareImgUrl": "http://i1.lifevccdn.com/upload/cart/91b548e7aa354847a31309f21d857634.png",
+                        "ShareDesc": "测试小程序分享到QQ描述",
+                        "ShareType": 3, //(1、H5 2、海报 3、小程序)
+                        "SharePlatform":2, //(1、朋友圈 2、微信好友 3、QQ)
                     };
                 shareItem(shareData);
                 log($(this).text() + " stop");

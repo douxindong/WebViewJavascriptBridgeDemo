@@ -137,6 +137,7 @@ function appShareUrl(shareData) {
 
 //调用原生app的分享
 function shareItem(shareData) {
+    alert(JSON.stringify(shareData))
     log("begin shareItem shareData=" + JSON.stringify(shareData));
     try {
         if (isAndroid) {
