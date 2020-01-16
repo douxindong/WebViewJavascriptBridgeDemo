@@ -145,8 +145,8 @@ function shareItem(shareData) {
         }
         if (isiOS) {
             //调用原生方法：分享
-            // iosDo('shareItem',shareData);
-            OCmodel.shareItem(shareData);
+            iosDo('shareItem',shareData);
+            // OCmodel.shareItem(shareData);
         }
     } catch (error) {
         log("shareItem error");
