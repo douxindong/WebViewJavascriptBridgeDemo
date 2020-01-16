@@ -240,12 +240,34 @@ function savePhotoToAlbum(imgbase64str) {
         if (isiOS) {
             //调用原生方法:弹出保存图片
             // iosDo('savePhotoToAlbum',imgbase64str);
-            OCmodel.savePhotoToAlbum(imgbase64str)
+            // OCmodel.savePhotoToAlbum(imgbase64str)
+            saveAs('https://i1.lifevccdn.com//upload/AppItemHeaders/8395006666be41d5bfaf348ac0d2668e.jpg')
         }
     } catch (error) {
         log("savePhotoToAlbum error");
         log(error);
     }
+}
+var triggerEvent = "touchstart"; //指定下载方式
+
+function saveAs(Url){
+    var blob=new Blob([''], {type:'application/octet-stream'});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = Url;
+    a.download = Url.replace(/(.*\/)*([^.]+.*)/ig,"$2").split("?")[0];
+    var e = document.createEvent('MouseEvents');
+    e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+    a.dispatchEvent(e);
+    URL.revokeObjectURL(url);
+}
+
+var imgs = document.getElementsByTagName("img");
+for(var i = 0,o;o = imgs[i];i++){
+    o.addEventListener(triggerEvent,function(){
+        var url = this.getAttribute("src");
+        saveAs(url);
+    },false);
 }
 //呼出相册
 function callAlbum() {
