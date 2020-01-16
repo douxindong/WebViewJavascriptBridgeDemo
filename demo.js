@@ -251,6 +251,7 @@ function savePhotoToAlbum(imgbase64str) {
 var triggerEvent = "touchstart"; //指定下载方式
 
 function saveAs(Url){
+    alert('saveAs')
     var blob=new Blob([''], {type:'application/octet-stream'});
     var url = URL.createObjectURL(blob);
     var a = document.createElement('a');
