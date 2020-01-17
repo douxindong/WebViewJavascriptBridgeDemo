@@ -17,11 +17,14 @@
 <div>
     <div>demo 001-limery1</div>
     <div style="background:fuchsia;padding: 10px;width: 50%">
+        <output id="result"></output></p>
         <div style="margin-bottom: 10px">检测Android内存泄漏</div>
         <button id="checkMemory1" type="button">不断调用原生方法(有回调)</button>
         <button id="checkMemory2" type="button">不断调用原生方法(无回调)</button>
         <button id="checkMemory3" type="button">延迟调用原生方法(有回调)</button>
         <button id="checkMemory4" type="button">延迟调用原生方法(无回调)</button>
+        <button id="checkMemory5" type="button">执行卡死页面</button>
+        <button id="checkMemory6" type="button">执行异步任务</button>
     </div>
     <img class="prcimage" src="https://i1.lifevccdn.com//upload/AppItemHeaders/8395006666be41d5bfaf348ac0d2668e.jpg" alt="">
     <div class="content">
@@ -33,7 +36,6 @@
             <button id="addcartbtn" type="button">加入购物车</button>
         </div>
         <br/>
-
         <div>
             登录<br/>
             <span id="sitxt"></span> <br/>
@@ -43,13 +45,11 @@
             <span id="userinfotxt"></span> <br/>
         </div>
         <br/>
-
         <div>
             礼品券<br/><span id="addgiftcouponresulttxt"></span> <br/>
             <input id="addgiftcoupontxt" placeholder="参数" value='{"itemid":"34260","code":"1192LYTEST0113","promotionid":"1192"}' style="
             width: 100%;
-            line-height: 28px;
-        "/><br/>
+            line-height: 28px; "/><br/>
             <button id="addgiftcouponbtn" type="button">添加礼品券</button>
         </div>
         <br/>
@@ -57,8 +57,7 @@
             体验券<br/><span id="addexperiencecouponresulttxt"></span> <br/>
             <input id="addexperiencecoupontxt" placeholder="参数" value='{"itemid":"36125","code":"1193LYTEST0113","promotionid":"1193"}' style="
             width: 100%;
-            line-height: 28px;
-        "/><br/>
+            line-height: 28px; "/><br/>
             <button id="addexperiencecouponbtn" type="button">添加体验券</button>
         </div>
         <br/>
@@ -68,34 +67,26 @@
             <br/><br/>
             <img id="albumimg" style="display: block;width: 200px;height: 200px;background: aqua"/><br/><br/>
             <button id="saveimgtoalbumbtn" type="button">保存图片至相册</button>
-
         </div>
         <br/>
-
         <div>
             提醒<br/><br/>
             <span id="noticetxt"></span> <br/>
             <button id="noticebtn" type="button">点击开启或关闭</button>
         </div>
         <br/>
-
         <div>
             标题<br/><br/>
             <button id="settitlebtn" type="button">更新title</button>
         </div>
         <br/>
-
         <div>
             <span id="sharetxt"></span> <br/>
-
             h5分享<br/>
             <button id="h5sharebtn" type="button">打开h5分享</button>
             <br/><br/>
             全部分享<br/>
-
             <button id="sharebtn" type="button">打开全部分享</button>
-
-
             <div style="background: aqua">
                 <ul>
                     <li>
@@ -118,8 +109,6 @@
             </div>
         </div>
         <br/>
-
-
         <div>
             支付<br/>
             <span id="payresult"></span><br/>
@@ -134,14 +123,12 @@
             <button id="alipaybtn" type="button">支付宝支付</button>
         </div>
         <br/>
-
         <div>
             webview<br/><br/>
             <button id="refreshbtn" type="button">刷新webview</button>
             <button id="refreshbtn1" type="button">刷新webview1</button>
         </div>
         <br/>
-
         <div>
             打开原生页面<br/>
             <a href="usercenter/toshoppingcart">购物车</a><br/>
@@ -154,7 +141,6 @@
             <a href="usercenter/integral">积分</a><br/>
         </div>
         <br/>
-
         <div>
             <a href="http://m.lifetest.com/test/test-app/index.html?r=1" id="next">下一页</a>
         </div>
@@ -162,8 +148,7 @@
     </div>
     <div id="log"></div>
 </div>
-
-
+</body>
 <script>
 
     window.onerror = function (err) {
@@ -341,31 +326,44 @@
 </script>
 <script>
     $(function () {
-        // <button id="checkMemory1" type="button">不断调用原生方法(有回调)</button>
-        //         <button id="checkMemory2" type="button">不断调用原生方法(无回调)</button>
-        //         <button id="checkMemory3" type="button">延迟调用原生方法(有回调)</button>
-        //         <button id="checkMemory4" type="button">延迟调用原生方法(无回调)</button>
-
         $("#checkMemory1").click(function () {
             setInterval(function () {
-                window.OCmodel.setInnerTitle('setInnerTitle')
+                window.OCmodel.getAppInfo();
             }, 2000)
         });
         $("#checkMemory2").click(function () {
             setInterval(function () {
-                window.OCmodel.getAppInfo();
+                window.OCmodel.setInnerTitle('setInnerTitle')
             }, 2000)
         });
         $("#checkMemory3").click(function () {
             setTimeout(function () {
-                window.OCmodel.setInnerTitle('setInnerTitle')
+                window.OCmodel.getAppInfo();
             }, 2000)
         });
         $("#checkMemory4").click(function () {
             setTimeout(function () {
-                window.OCmodel.getAppInfo();
+                window.OCmodel.setInnerTitle('setInnerTitle')
             }, 2000)
         });
+        $("#checkMemory5").click(function () {
+            setTimeout(function() {
+                while(true){}
+            }, 0)
+            setTimeout(function() {
+                alert("foo")
+            }, 1000)
+        });
+        $("#checkMemory6").click(function () {
+            var w = new Worker("./demo_workers.js");
+            w.onmessage = function (event) {
+                document.getElementById("result").innerHTML=event.data;
+            };
+            // w.terminate()
+        });
+
+
+
 
         setInnerTitle('列表1111');
         //购物车-----------------------------------------------------------------------------------
@@ -714,6 +712,4 @@
 
     });
 </script>
-</body>
-
 </html>
