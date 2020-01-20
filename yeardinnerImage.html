@@ -10,18 +10,19 @@
             changeSrc();
         },0);
         function changeSrc() {
-            var src = getUrlKey('src')
-            console.log(src)
-            document.getElementById("bg").src=src;
+            let src = getUrlKey('src');
+            if (src && src.length>0) {
+                document.getElementById("bg").src = src;
+            }
         }
         function getUrlKey(name) {
             return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[
-                1].replace(/\+/g, '%20')) || null
+                1].replace(/\+/g, '%20')) || null;
         }
     </script>
 </head>
 <body>
-<img id="bg" class="bg" src="http://i1.lifevccdn.com//Upload/AppCategoryBanner/c2fe986d4fc542d5bc0b90f32c6fb8c2.png" alt="">
+<img id="bg" class="bg" src="http://i1.lifevccdn.com//Upload/AppCategoryBanner/8f9230715c3c4f3288e2ec5568144b7d.png" alt="">
 </body>
 <style>
   body {
