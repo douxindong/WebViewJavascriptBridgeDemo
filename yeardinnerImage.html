@@ -6,11 +6,14 @@
 <meta name="apple-itunes-app" content="app-id=961925723"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <script>
-        changeSrc();
+        setTimeout(function () {
+            changeSrc();
+        },0);
+        // changeSrc();
         function changeSrc() {
-            let src = getUrlKey('src');
-            if (src && src.length>0) {
-                document.getElementById("bg").src = src;
+            let srcUrl = getUrlKey('src');
+            if (srcUrl && srcUrl.length>0) {
+                document.getElementById("bg").src = srcUrl;
             }
         }
         function getUrlKey(name) {
