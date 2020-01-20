@@ -355,8 +355,8 @@
             }, 1000)
         });
         $("#checkMemory6").click(function () {
-            var w = new Worker("./demo_workers.js");
-            w.onmessage = function (event) {
+           new Worker("./demo_workers.js"); var w =
+                w.onmessage = function (event) {
                 document.getElementById("result").innerHTML=event.data;
             };
             // w.terminate()
