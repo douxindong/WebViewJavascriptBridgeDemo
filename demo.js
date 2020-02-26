@@ -127,7 +127,8 @@ function appShareUrl(shareData) {
         }
         if (isiOS) {
             //调用原生方法：分享
-            iosDo('goShareUrl',shareData);
+            // iosDo('goShareUrl',shareData);
+            window.OCmodel.goShareUrl(shareData);
         }
     } catch (error) {
         log("appShareUrl error");
