@@ -52,7 +52,11 @@
                   }
               }
               if (isIos) {
-                  locationCall(iosStore)
+                  locationCall('http://d.lifevc.com')
+                  window.setTimeout(function () {
+                    locationCall(iosStore)
+                }, 200)
+                //   locationCall(iosStore)
               }
           }
       }
@@ -63,7 +67,6 @@
   </script>
 </head>
 <body onload="openApp()">
-    <a href="lifevciosApp://com.lifevc.shop">ahshahshashahshahshah</a>
 <div id="bg" class="bg"/>
 </body>
 <style>
