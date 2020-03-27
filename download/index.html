@@ -52,10 +52,16 @@
                   }
               }
               if (isIos) {
-                  locationCall('http://d.lifevc.com')
-                  window.setTimeout(function () {
-                    locationCall(iosStore)
-                }, 200)
+                document.domain = 'douxindong.com';
+                var ifr = document.createElement('iframe');
+                ifr.src = iosApp;
+                ifr.style.display = 'none';
+                document.body.appendChild(ifr);
+                ifr.onload = function(){
+                    let doc = ifr.contentDocument || ifr.contentWindow.document;
+                    // 在这里操纵b.html
+                    alert(doc)
+                };
                 //   locationCall(iosStore)
               }
           }
