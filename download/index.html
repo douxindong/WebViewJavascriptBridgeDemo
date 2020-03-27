@@ -54,7 +54,8 @@
               if (isIos) {
                 document.domain = 'douxindong.com';
                 var ifr = document.createElement('iframe');
-                ifr.src = iosApp;
+                ifr.src = iosStore;
+                // ifr.src = iosApp;
                 ifr.style.display = 'none';
                 document.body.appendChild(ifr);
                 ifr.onload = function(){
@@ -62,7 +63,7 @@
                     // 在这里操纵b.html
                     alert(doc)
                 };
-                alert(ifr)
+                alert(JSON.stringify(ifr))
                 //   locationCall(iosStore)
               }
           }
