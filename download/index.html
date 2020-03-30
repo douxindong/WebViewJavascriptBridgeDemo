@@ -64,6 +64,8 @@
                     let doc = ifr.contentDocument || ifr.contentWindow.document;
                     // 在这里操纵b.html
                     alert(JSON.stringify(doc))
+                    console.log(doc)
+                    window.close()
                 };
                 // alert(JSON.stringify(ifr))
                   locationCall(iosApp)
@@ -77,7 +79,7 @@
   </script>
 </head>
 <body onload="openApp()">
-    <div>7</div>
+    <div>8</div>
 <div id="bg" class="bg"/>
 </body>
 <style>
