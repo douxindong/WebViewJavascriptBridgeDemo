@@ -52,7 +52,12 @@
                   }
               }
               if (isIos) {
-                locationCall(iosApp)
+                  try {
+                    locationCall(iosApp)
+                  } catch (error) {
+                    alert(error)
+                  }
+                
                 // document.domain = 'douxindong.com';
                 // var ifr = document.createElement('iframe');
                 // ifr.src = iosStore;
@@ -92,7 +97,7 @@
   </script>
 </head>
 <body onload="openApp()">
-    <div>4</div>
+    <div>5</div>
 <div id="bg" class="bg"/>
 </body>
 <style>
