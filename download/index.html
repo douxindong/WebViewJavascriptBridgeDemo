@@ -58,12 +58,23 @@
                 // ifr.src = iosApp;
                 ifr.style.display = 'none';
                 document.body.appendChild(ifr);
-                ifr.onload = function(){
-                    let doc = ifr.contentDocument || ifr.contentWindow.document;
-                    // 在这里操纵b.html
-                    alert(doc)
-                };
-                alert(JSON.stringify(ifr))
+                if (ifr.attachEvent){    
+                    ifr.attachEvent("onload", function(){        
+                        alert("Local iframe is now loaded.");    
+                    });
+                } else {    
+                    ifr.onload = function(){        
+                        alert("Local iframe is now loaded.");    
+                    };
+                }
+
+
+                // ifr.onload = function(){
+                //     let doc = ifr.contentDocument || ifr.contentWindow.document;
+                //     // 在这里操纵b.html
+                //     alert(doc)
+                // };
+                // alert(JSON.stringify(ifr))
                 //   locationCall(iosStore)
               }
           }
