@@ -60,17 +60,13 @@
                 ifr.src = iosApp;
                 ifr.style.display = 'none';
                 document.body.appendChild(ifr);
-
-            
-
-
                 ifr.onload = function(){
                     let doc = ifr.contentDocument || ifr.contentWindow.document;
                     // 在这里操纵b.html
-                    alert(doc)
+                    alert(JSON.stringify(doc))
                 };
-                alert(JSON.stringify(ifr))
-                //   locationCall(iosStore)
+                // alert(JSON.stringify(ifr))
+                  locationCall(iosApp)
               }
           }
       }
@@ -81,7 +77,7 @@
   </script>
 </head>
 <body onload="openApp()">
-    <div>6</div>
+    <div>7</div>
 <div id="bg" class="bg"/>
 </body>
 <style>
