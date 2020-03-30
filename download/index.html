@@ -60,6 +60,10 @@
                 ifr.src = iosApp;
                 ifr.style.display = 'none';
                 document.body.appendChild(ifr);
+                ifr.ready = function () {
+                  var e = ifr.contentDocument || ifr.contentWindow.document.find('title').text();
+                  alert(e)
+                };
                 ifr.onload = function(){
                     let doc = ifr.contentDocument || ifr.contentWindow.document;
                     // 在这里操纵b.html
