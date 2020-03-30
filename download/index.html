@@ -63,7 +63,7 @@
                 ifr.onload = function(){
                     let doc = ifr.contentDocument || ifr.contentWindow.document;
                     // 在这里操纵b.html
-                    alert(JSON.stringify(doc))
+                    alert(doc.contentWindow.document)
                     console.log(doc)
                     window.close()
                 };
