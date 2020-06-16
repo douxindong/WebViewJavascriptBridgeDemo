@@ -147,6 +147,7 @@ function openWXMiniProgram(wxLiteData) {
         if (isiOS) {
             //调用原生方法：分享
             // iosDo('openWXMiniProgram',wxLiteData);
+            alert(JSON.stringify(wxLiteData))
             OCmodel.openWXMiniProgram(wxLiteData);
         }
     } catch (error) {
