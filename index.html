@@ -84,6 +84,11 @@
             <span id="sharetxt"></span> <br/>
             h5分享<br/>
             <button id="h5sharebtn" type="button">打开h5分享</button>
+            <span id="sharetxt"></span> <br/>
+            跳转小程序<br/>
+            <button id="openMPAGbtn" type="button">打开爱逛直播小程序</button>
+            <button id="openMPKDbtn" type="button">打开看点直播小程序</button>
+            <button id="openMPLifeVCbtn" type="button">打开丽芙家居小程序</button>
             <br/><br/>
             全部分享<br/>
             <button id="sharebtn" type="button">打开全部分享</button>
@@ -476,7 +481,33 @@
             appShareUrl(shareData);
             log($(this).text() + " stop");
         });
-
+        $("#openMPAGbtn").click(function () {
+            log($(this).text() + " click");
+            let wxLiteData = {
+                        "MP_APPUserName": "gh_9648f422f2cd",
+                        "path": "packages/main/live-room/index?liveId=428548&relatedGuangBusinessId=43762230&from=backstagePath",
+            };
+            openWXMiniProgram(wxLiteData);
+            log($(this).text() + " stop");
+        });
+        $("#openMPKDbtn").click(function () {
+            log($(this).text() + " click");
+            let wxLiteData = {
+                "MP_APPUserName": "gh_5ce47abb1b76",
+                "path": "",
+            };
+            openWXMiniProgram(wxLiteData);
+            log($(this).text() + " stop");
+        });
+        $("#openMPLifeVCbtn").click(function () {
+            log($(this).text() + " click");
+            let wxLiteData = {
+                "MP_APPUserName": "gh_6db1f06f678f",
+                "path": "http://m.lifevc.com",
+            };
+            openWXMiniProgram(wxLiteData);
+            log($(this).text() + " stop");
+        });
         $("#sharebtn").click(function () {
             log($(this).text() + " click");
             var shareData = {

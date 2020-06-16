@@ -137,6 +137,24 @@ function appShareUrl(shareData) {
 }
 
 //调用原生app的分享
+function openWXMiniProgram(wxLiteData) {
+    alert(JSON.stringify(wxLiteData))
+    log("begin openWXMiniProgram wxLiteData=" + JSON.stringify(wxLiteData));
+    try {
+        if (isAndroid) {
+            window.OCmodel.openWXMiniProgram(JSON.stringify(wxLiteData)); //调用原生方法：分享
+        }
+        if (isiOS) {
+            //调用原生方法：分享
+            iosDo('openWXMiniProgram',wxLiteData);
+            // OCmodel.shareItem(shareData);
+        }
+    } catch (error) {
+        log("shareItem error");
+        log(error);
+    }
+}
+//调用原生app的分享
 function shareItem(shareData) {
     alert(JSON.stringify(shareData))
     log("begin shareItem shareData=" + JSON.stringify(shareData));
