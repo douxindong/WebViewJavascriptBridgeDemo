@@ -26,6 +26,7 @@
         }
 
         function openApp() {
+
             if (navigator.userAgent.match(/android/i)) {
                 isAndroid = true
             }
@@ -59,7 +60,7 @@
         }
 
         function locationCall(url) {
-            window.location = url;
+            window.open(url);
         }
     </script>
 </head>
