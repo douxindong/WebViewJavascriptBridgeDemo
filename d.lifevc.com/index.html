@@ -62,24 +62,47 @@
         }
 
         function locationCall(url) {
-            window.open(url);
+            window.location = (url);
         }
-        // request();
-        // function request() {
-        //     let url = 'http://w2api.lifevc.com/wechat/config?url='+encodeURIComponent(window.location.href.split('#')[0])
-        //     $.ajax({
-        //         type:"get",
-        //         url:url,
-        //         async:true,
-        //         success:function(data){
-        //             console.log(data)
-        //             alert(JSON.stringify(data));
-        //         },error:function(data){
-        //             console.log(data)
-        //             alert(JSON.stringify(data));
-        //         }
-        //     });
-        // }
+        request();
+        function request() {
+            let url = 'http://w2api.lifevc.com/wechat/config?url='+encodeURIComponent(window.location.href.split('#')[0])
+
+            $.ajax({
+                type:"get",
+                url:url,
+                async:true,
+                headers:{
+                    'Content-Type':'application/json;charset=utf8',
+                    'ApiToken' : "QWN0QXBpfDZjYXRyZW9mMGpwbzM4ZWI0MElINDY1ZGtsZnVv",
+                },
+                success:function(res){
+                    console.log(res)
+                    let data = res.InnerData;
+                    configWX(data)
+                },error:function(err){
+                    console.log(err)
+                }
+            });
+        }
+        function configWX(data) {
+            wx.config({
+                debug: true,
+                appId: data.appId,
+                nonceStr: data.nonceStr,
+                signature: data.signatrue,
+                timestamp: data.timestamp,
+                jsApiList: [],
+                openTagList: ['wx-open-launch-app']
+            });
+            wx.ready(() => {//微信验证成功会调用该方法
+                console.log('微信ready成功')
+            });
+            wx.error(() => {
+                console.log('微信初始化失败')
+            })
+
+        }
     </script>
 </head>
 <body>
@@ -87,7 +110,7 @@
 <div id="bg" class="bg"/>
 <wx-open-launch-app
         id="launch-btn"
-        appid="wx4708f3e8c475498f"
+        appid="wx649fd2d75cb908dd"
         extinfo="your-extinfo"
 >
     <div>
