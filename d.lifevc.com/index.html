@@ -6,6 +6,8 @@
     <meta name="apple-itunes-app" content="app-id=961925723,app-clip-bundle-id=com.lifevc.iosApp.Clip"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <script src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+    <script src="./jquery.min.js"></script>
+
     <script type="text/javascript">
 
         let isHide = false;
@@ -62,10 +64,26 @@
         function locationCall(url) {
             window.open(url);
         }
+        // request();
+        // function request() {
+        //     let url = 'http://w2api.lifevc.com/wechat/config?url='+encodeURIComponent(window.location.href.split('#')[0])
+        //     $.ajax({
+        //         type:"get",
+        //         url:url,
+        //         async:true,
+        //         success:function(data){
+        //             console.log(data)
+        //             alert(JSON.stringify(data));
+        //         },error:function(data){
+        //             console.log(data)
+        //             alert(JSON.stringify(data));
+        //         }
+        //     });
+        // }
     </script>
 </head>
 <body>
-<!--<body onload="openApp()">-->
+<body onload="openApp()">
 <div id="bg" class="bg"/>
 <wx-open-launch-app
         id="launch-btn"
