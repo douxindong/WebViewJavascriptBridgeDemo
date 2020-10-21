@@ -5,6 +5,7 @@
     <title>丽芙家居</title>
     <meta name="apple-itunes-app" content="app-id=961925723,app-clip-bundle-id=com.lifevc.iosApp.Clip"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
     <script type="text/javascript">
 
         let isHide = false;
@@ -64,6 +65,26 @@
 </head>
 <body onload="openApp()">
 <div id="bg" class="bg"/>
+<wx-open-launch-app
+        id="launch-btn"
+        appid="wx4708f3e8c475498f"
+        extinfo="your-extinfo"
+>
+    <div>
+        <style>.btn { padding: 12px }</style>
+        <button class="btn">App内查看</button>
+    </div>
+</wx-open-launch-app>
+<script>
+    var btn = document.getElementById('launch-btn');
+    btn.addEventListener('launch', function (e) {
+        console.log('success');
+    });
+    btn.addEventListener('error', function (e) {
+        console.log('fail', e.detail);
+    });
+</script>
+
 </body>
 <style>
     body {
