@@ -4,6 +4,9 @@
     <list default="true" id="6c8b47c1-6a85-432e-86ad-0145799474f2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NativeH5/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/NativeH5/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NativeH5/static/js/app.b5004c013518eee93366.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NativeH5/static/js/app.b5004c013518eee93366.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NativeH5/static/js/manifest.2ae2e69a05c33dfc65f8.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/NativeH5/static/js/manifest.2ae2e69a05c33dfc65f8.js.map" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +47,7 @@
       <workItem from="1622609739526" duration="805000" />
       <workItem from="1622611996776" duration="26000" />
       <workItem from="1622613345516" duration="16000" />
-      <workItem from="1622630828394" duration="492000" />
+      <workItem from="1622630828394" duration="2300000" />
     </task>
     <servers />
   </component>
