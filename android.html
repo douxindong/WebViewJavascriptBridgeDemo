@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+	</head>
+
+	<body>
+
+		<button id="btn">获取用户信息</button>
+
+		<script type="text/javascript">
+			window.onload = function() {
+				var btn = document.querySelector('#btn');
+				btn.onclick = function() {
+					console.log('开始获取用户信息')
+					try {
+						window.WebViewJavascriptBridge.callHandler(
+							'native',
+							null,
+							function(responseData) {
+								console.log('这是返回结果：' + responseData)
+							}
+						);
+					} catch(e) {
+
+						console.log(e)
+					}
+					console.log('获取信息结束')
+				}
+
+			}
+
+			function connectWebViewJavascriptBridge(callback) {
+				if(window.WebViewJavascriptBridge) {
+					callback(WebViewJavascriptBridge)
+				} else {
+					document.addEventListener(
+						'WebViewJavascriptBridgeReady',
+						function() {
+							callback(WebViewJavascriptBridge)
+						},
+						false
+					);
+				}
+			}
+
+			connectWebViewJavascriptBridge(function(bridge) {
+				bridge.init(function(message, responseCallback) {
+					console.log('JS got a message', message);
+					var data = {
+						'Javascript Responds': '测试中文!'
+					};
+
+					if(responseCallback) {
+						console.log('JS responding with', data);
+						responseCallback(data);
+					}
+				});
+
+				bridge.registerHandler("functionInJs", function(data, responseCallback) {
+				
+					if(responseCallback) {
+						var responseData = "Javascript Says Right back aka!";
+						responseCallback(responseData);
+					}
+				});
+			})
+		</script>
+
+	</body>
+
+</html>
