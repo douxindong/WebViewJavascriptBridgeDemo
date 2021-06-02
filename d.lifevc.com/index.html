@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>丽芙家居</title>
+    <meta name="apple-itunes-app" content="app-id=961925723,app-clip-bundle-id=com.lifevc.iosApp.Clip"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+    <script src="./jquery.min.js"></script>
+
+    <script type="text/javascript">
+        function openApp() {
+            var btn = document.getElementById('launch-btn');
+            btn.addEventListener('launch', function (e) {
+                console.log('success');
+            });
+            btn.addEventListener('error', function (e) {
+                console.log('fail', e.detail);
+            });
+        }
+        request();
+        function request() {
+            let url = 'http://w2api.lifevc.com/wechat/config?url='+encodeURIComponent(window.location.href.split('#')[0])
+            $.ajax({
+                type:"get",
+                url:url,
+                async:true,
+                data:{
+                    // "type":1,
+                },
+                headers:{
+                    'Content-Type':'application/json;charset=utf8',
+                    'ApiToken' : "QWN0QXBpfDZjYXRyZW9mMGpwbzM4ZWI0MElINDY1ZGtsZnVv",
+                },
+                success:function(res){
+                    console.log(res)
+                    let data = res.InnerData;
+                    configWX(data)
+                },error:function(err){
+                    console.log(err)
+                }
+            });
+        }
+        function configWX(data) {
+            wx.config({
+                debug: true,
+                appId: data.appId,
+                nonceStr: data.nonceStr,
+                signature: data.signatrue,
+                timestamp: data.timestamp,
+                jsApiList: [],
+                openTagList: ['wx-open-launch-app']
+            });
+            wx.ready(() => {//微信验证成功会调用该方法
+                console.log('微信ready成功')
+            });
+            wx.error(() => {
+                console.log('微信初始化失败')
+            })
+
+        }
+    </script>
+</head>
+<body onload="openApp()">
+<div>
+    <wx-open-launch-app
+            id="launch-btn"
+            appid="wx4708f3e8c475498f"
+            extinfo="your-extinfo">
+        <div>
+            <style>.btn { padding: 12px }</style>
+            <button class="btn">App内查看</button>
+        </div>
+    </wx-open-launch-app>
+
+</div>
+
+</body>
+<style>
+    body {
+        background: #194342;
+        margin: 0px;
+    }
+</style>
+</html>

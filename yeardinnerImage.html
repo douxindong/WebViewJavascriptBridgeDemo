@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>2020年夜饭</title>
+<meta name="apple-itunes-app" content="app-id=961925723"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <script>
+        setTimeout(function () {
+            changeSrc();
+        },0);
+        // changeSrc();
+        function changeSrc() {
+            let srcUrl = getUrlKey('src');
+            if (srcUrl && srcUrl.length>0) {
+                document.getElementById("bg").src = srcUrl;
+            }
+        }
+        function getUrlKey(name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[
+                1].replace(/\+/g, '%20')) || null;
+        }
+    </script>
+</head>
+<body>
+<img id="bg" class="bg" src="http://i1.lifevccdn.com//Upload/AppCategoryBanner/8f9230715c3c4f3288e2ec5568144b7d.png" alt="">
+</body>
+<style>
+  body {
+    background: white;
+    margin: 0px;
+  }
+
+  .bg {
+    width: 100%;
+    height:100%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    /*padding-top: 177.6%;*/
+  }
+</style>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WANTS好物</title>
+    <meta name="apple-itunes-app" content="app-id=1013821440"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <script type="text/javascript">
+
+        let isHide = false;
+        let isIos = false
+        let isAndroid = false
+        let androidApp = "h5wants://wants.com";
+        let androidStore = "http://a.app.qq.com/o/simple.jsp?pkgname=com.wants"
+        let androidApk = androidStore;
+        let iosApp = "com.wntvideo.com://";
+        let iosStore = "itms-apps://itunes.apple.com/app/id1013821440";
+
+        function isWeiXin() {
+            if (window.navigator.userAgent.toLowerCase().match(/MicroMessenger/i) == 'micromessenger') {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function openApp() {
+            if (navigator.userAgent.match(/android/i)) {
+                isAndroid = true
+            }
+            if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+                isIos = true
+            }
+            document.addEventListener("visibilitychange", function () {
+                isHide = true
+            })
+            if (iosApp) {
+                locationCall(iosApp)
+            }
+            document.getElementById("bg").onclick = function () {
+                isHide = false
+                if (isAndroid) {
+                    if (isWeiXin()) {
+                        locationCall(androidStore)
+                    } else {
+                        window.setTimeout(function () {
+                            if (!isHide) {
+                                locationCall(androidApk)
+                            }
+                        }, 2000)
+                        locationCall(androidApp)
+                    }
+                }
+                if (isIos) {
+                    locationCall(iosStore)
+                }
+            }
+        }
+
+        function locationCall(url) {
+            window.location = url;
+        }
+    </script>
+</head>
+<body onload="openApp()">
+<div id="bg" class="bg"/>
+</body>
+<style>
+    body {
+        background: #FF8C01;
+        margin: 0px;
+    }
+    .bg {
+        width: 100%;
+        background-image: url('http://7xkswp.com1.z0.glb.clouddn.com/1125_2436.png');/*http://static.wantscart.com/1125_2436.png*/
+        background-repeat: no-repeat;
+        background-size: 100%;
+        padding-top: 177.6%;
+    }
+</style>
+</html>
