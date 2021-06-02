@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6c8b47c1-6a85-432e-86ad-0145799474f2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android.html" beforeDir="false" afterPath="$PROJECT_DIR$/android.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +23,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -36,6 +36,7 @@
       <updated>1622609734526</updated>
       <workItem from="1622609739526" duration="805000" />
       <workItem from="1622611996776" duration="26000" />
+      <workItem from="1622613345516" duration="16000" />
     </task>
     <servers />
   </component>
