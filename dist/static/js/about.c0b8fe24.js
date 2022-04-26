@@ -1,0 +1,1 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["about"],{"8ab4":function(t,n,a){"use strict";a.r(n);var e=function(){var t=this,n=t.$createElement,a=t._self._c||n;return a("div",{staticClass:"about"},[a("van-button",{attrs:{type:"info"}},[t._v("about")])],1)},u=[],o=a("2877"),s={},l=Object(o["a"])(s,e,u,!1,null,null,null);n["default"]=l.exports}}]);
